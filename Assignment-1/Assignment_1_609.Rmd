@@ -1,0 +1,322 @@
+---
+title: "Assignment-1"
+author: "Chirag Vithalani"
+date: "September 10, 2016"
+output: html_document
+---
+
+<hr />
+####Page 8: #10
+
+Your grandparents have an annuity. The value of the annuity increases each month by
+an automatic deposit of 1% interest on the previous month's balance.Your grandparents
+withdraw $1000 at the beginning of each month for living expenses. Currently, they
+have $50,000 in the annuity. Model the annuity with a dynamical system. Will the
+annuity run out of money? When? Hint: What value will 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msub><mi>a</mi><mi>n</mi></msub>
+</math> have when the annuity is
+depleted?
+
+As per on page 6
+
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi><mi>h</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>e</mi><mo>=</mo><mo>&#x2206;</mo><mo>&#xA0;</mo><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>-</mo><mo>&#xA0;</mo><msub><mi>a</mi><mi>n</mi></msub></math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msub><mi>a</mi><mi>0</mi></msub>
+</math>=50,000
+
+Initial value is $50,000
+Now after first month it will be 
+$50,000 (initial value) + $500 ( 1% interest) -$1000 ( withdrawal)=$49500=<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msub><mi>a</mi><mi>1</mi></msub>
+</math>
+
+
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi><mi>h</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>e</mi><mo>=</mo><mo>&#x2206;</mo><mo>&#xA0;</mo><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>-</mo><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mn>0</mn><mo>.</mo><mn>01</mn><msub><mi>a</mi><mi>n</mi></msub><mo>-</mo><mn>1000</mn><mspace linebreak="newline"/><mi>s</mi><mi>o</mi><mspace linebreak="newline"/><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>-</mo><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mn>0</mn><mo>.</mo><mn>01</mn><msub><mi>a</mi><mi>n</mi></msub><mo>-</mo><mn>1000</mn><mspace linebreak="newline"/><mi>f</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>&#xA0;</mo><mi>w</mi><mi>o</mi><mi>u</mi><mi>l</mi><mi>d</mi><mo>&#xA0;</mo><mi>b</mi><mi>e</mi><mspace linebreak="newline"/><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>a</mi><mi>n</mi></msub><mo>+</mo><mn>0</mn><mo>.</mo><mn>01</mn><msub><mi>a</mi><mi>n</mi></msub><mo>-</mo><mn>1000</mn><mo>=</mo><msub><mi>a</mi><mi>n</mi></msub><mo>(</mo><mn>1</mn><mo>+</mo><mn>0</mn><mo>.</mo><mn>01</mn><mo>)</mo><mo>-</mo><mn>1000</mn><mo>=</mo><mn>1</mn><mo>.</mo><mn>01</mn><msub><mi>a</mi><mi>n</mi></msub><mo>-</mo><mn>1000</mn></math>
+
+```{r}
+
+amountLeft=50000 #Initial amount
+month=0 #initially 0th month
+
+while(amountLeft >0)
+{
+  month=month+1
+  
+  amountLeft=1.01 * amountLeft-1000
+  
+  cat(sprintf("Amount left: %f after %d month \n", amountLeft, month))
+  
+    
+}
+
+```
+####so annuity will run out after 69 months
+
+
+####Page 17: #9
+The data in the accompanying table show the speed n (in increments of 5 mph) of an
+automobile and the associated distance an in feet required to stop it once the brakes
+are applied. For instance, n=6 (representing 6 x 5 = 30 mph) requires a stopping
+distance of <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mn>6</mn></msub></math>=47ft.
+
+a. Calculate and plot the change $\Delta a_n$ versus $n$. Does the graph reasonably approximate a 
+linear relationship?
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <mi mathvariant="normal">&#x0394;<!-- ?? --></mi>
+  <msub>
+    <mi>a</mi>
+    <mi>n</mi>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>a</mi>
+    <mrow >
+      <mi>n</mi>
+      <mo>+</mo>
+      <mn>1</mn>
+    </mrow>
+  </msub>
+  <mo>&#x2212;<!-- ??? --></mo>
+  <msub>
+    <mi>a</mi>
+    <mi>n</mi>
+  </msub>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" >
+  <mi mathvariant="normal">&#x0394;<!-- ?? --></mi>
+  <msub>
+    <mi>a</mi>
+    <mn>0</mn>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>a</mi>
+    <mn>1</mn>
+  </msub>
+  <mo>&#x2212;<!-- ??? --></mo>
+  <msub>
+    <mi>a</mi>
+    <mn>0</mn>
+  </msub>
+  <mo>=</mo>
+  <mn>6</mn>
+  <mo>&#x2212;<!-- ??? --></mo>
+  <mn>3</mn>
+  <mo>=</mo>
+  <mn>3</mn>
+</math>
+
+```{r warning=FALSE}
+
+brakesDataFrame <- data.frame(n=1:16, an=c(3,6,11,21,32,47,65,87,112,140,171,204,241,282,325,376))
+
+brakesDataFrame$deltaAn = c(NA,tail(brakesDataFrame$an,-1)-head(brakesDataFrame$an,-1))
+brakesDataFrame
+
+library(ggplot2)
+
+ggplot(brakesDataFrame, aes(x=n, y=deltaAn)) +geom_line()
+
+```
+
+This is almost linear relationship.
+
+b. Based on your conclusions in part (a), find a difference equation model for the stopping distance
+data. Test your model by plotting the errors in the predicted values against $n$. Discuss the 
+appropriateness of the model.
+
+we can assume that if n=0, stopping distance will be 0, that is line passes through origin.
+
+To approximate the slope of this line calculating $\frac{\Delta a_n}{n}$
+
+
+
+```{r}
+
+brakesDataFrame$slope <- brakesDataFrame$deltaAn / brakesDataFrame$n
+
+slope <- mean(brakesDataFrame$slope, na.rm=TRUE)
+slope
+
+```
+
+
+Plotting errors in the predicted values vs n
+
+```{r}
+
+brakesDataFrame$estimate <- slope*brakesDataFrame$n # as per page 3
+
+brakesDataFrame$error <- brakesDataFrame$estimate - brakesDataFrame$deltaAn
+
+ggplot(brakesDataFrame, aes(x=n, y=error)) + geom_point()
+
+
+```
+
+Looks like there is pattern to the errors. This model may not be appropriate.
+
+
+### Page 34, Question 13 ###
+
+Consider the spreading of a rumor through a company of 1000 employees, all working in the same 
+building. We assume that the spreading of a rumor is similar to the spreading of a contagious 
+disease (example 3, section 1.2) in that the number of people hearing the rumor each day is 
+proportional to the product of the number who have heard the rumor previously and the number who
+have not heard the rumor. This is given by:
+
+$$ r_{n+1} = r_n + kr_n (1000 - n) $$
+
+Where $k$ is a parameter that depends on how fast the rumor spreads and $n$ is the number of days.
+Assume $k = 0.001$ and further assume that four people initially have heard the rumor. How soon will
+all 1000 employees have heard the rumor?
+
+####Answer
+$n$ is the number of days
+assume that four people initially have heard the rumor
+```{r}
+
+
+rumorDataFrame <- data.frame(n=0, r=4)
+
+k <- 0.001
+
+for(i in 1:13)
+{
+  # as per given equation
+  tempvar<-c(i, rumorDataFrame$r[i] + k*rumorDataFrame$r[i]*(1000 - rumorDataFrame$r[i]))
+  rumorDataFrame <- rbind(rumorDataFrame,tempvar )
+}
+
+rumorDataFrame
+
+```
+
+We can say,after 12 days, the rumor will have spread throughout the office.
+
+### Page 55, Question 6 ###
+
+An economist is interested in the variation of the price of a single product. It is observed that a 
+high price for the product in the market attracts more suppliers. However, increasing the quantity
+of the product supplied tends to drive the price down. Over time, there is an interaction between 
+price and supply. The economist has proposed the following model,p where $P_n$ represents the price 
+of the product at year $n$, and $Q_n$ represents the quantity. Find the equilibrium values for this
+system.
+
+$$ P_{n+1} = P_n - 0.1(Q_n - 500) $$
+$$ Q_{n+1} = Q_n + 0.2(P_n - 100) $$
+
+a. Does the model make sense intuitively? What is the significance of the constants
+100 and 500? Explain the significance of the signs of the constants -0.1 and 0.2.???0:1 and 0.2.
+
+Yes it looks OK intuitively as it simpliefies things :)
+
+
+100 and 500 looks equilibrium values.
+For that
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mi>n</mi><mo>=</mo><mi>P</mi><mi>n</mi><mo>+</mo><mn>1</mn><mo>&#xA0;</mo><mo>&#xA0;</mo><mi>a</mi><mi>n</mi><mi>d</mi><mo>&#xA0;</mo><mi>Q</mi><mi>n</mi><mo>=</mo><mi>Q</mi><mi>n</mi><mo>+</mo><mn>1</mn></math>
+
+If we put values
+
+<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>-</mo><mi>P</mi><mo>=</mo><mo>-</mo><mn>0</mn><mo>.</mo><mn>1</mn><mo>(</mo><mi>Q</mi><mo>-</mo><mn>500</mn><mo>)</mo><mspace linebreak="newline"/><mn>0</mn><mo>=</mo><mi>Q</mi><mo>-</mo><mn>500</mn><mspace linebreak="newline"/><mi>Q</mi><mo>=</mo><mn>500</mn></math>
+
+sign looks the negative and positive price-quantity relationship.
+
+b. Test the initial conditions in the following table and predict the long-term behavior:
+
+     Case | Price | Quantity
+----------|-------|---------
+Case A    | 100   | 500
+Case B    | 200   | 500
+Case C    | 100   | 600
+Case D    | 100   | 400
+
+
+```{r warning=FALSE}
+
+library(reshape2)
+
+years <- 50
+
+pinit <- 100
+qinit <- 500
+
+economistDataFrame <- data.frame(n = 0, p = pinit, q= qinit)
+
+for(i in 1:years){
+  economistDataFrame <- rbind(economistDataFrame,
+                  c(i, tail(economistDataFrame$p,1) - 0.1*(tail(economistDataFrame$q,1) - 500),
+                    tail(economistDataFrame$q,1) + 0.2*(tail(economistDataFrame$p,1) - 100)))
+}
+
+ggplot(melt(economistDataFrame, id="n"), aes(x=n, y=value, color=variable)) + geom_line()
+
+#-------------------------------------------------------
+
+pinit <- 200
+qinit <- 500
+
+economistDataFrame <- data.frame(n = 0, p = pinit, q= qinit)
+
+for(i in 1:years){
+  economistDataFrame <- rbind(economistDataFrame,
+                  c(i, tail(economistDataFrame$p,1) - 0.1*(tail(economistDataFrame$q,1) - 500),
+                    tail(economistDataFrame$q,1) + 0.2*(tail(economistDataFrame$p,1) - 100)))
+}
+
+ggplot(melt(economistDataFrame, id="n"), aes(x=n, y=value, color=variable)) + geom_line()
+
+#-------------------------------------------------------
+pinit <- 100
+qinit <- 600
+
+economistDataFrame <- data.frame(n = 0, p = pinit, q= qinit)
+
+for(i in 1:years){
+  economistDataFrame <- rbind(economistDataFrame,
+                  c(i, tail(economistDataFrame$p,1) - 0.1*(tail(economistDataFrame$q,1) - 500),
+                    tail(economistDataFrame$q,1) + 0.2*(tail(economistDataFrame$p,1) - 100)))
+}
+
+ggplot(melt(economistDataFrame, id="n"), aes(x=n, y=value, color=variable)) + geom_line()
+
+#-------------------------------------------------------
+
+pinit <- 100
+qinit <- 400
+
+economistDataFrame <- data.frame(n = 0, p = pinit, q= qinit)
+
+for(i in 1:years){
+  economistDataFrame <- rbind(economistDataFrame,
+                  c(i, tail(economistDataFrame$p,1) - 0.1*(tail(economistDataFrame$q,1) - 500),
+                    tail(economistDataFrame$q,1) + 0.2*(tail(economistDataFrame$p,1) - 100)))
+}
+
+ggplot(melt(economistDataFrame, id="n"), aes(x=n, y=value, color=variable)) + geom_line()
+
+```
+
+I do not think this is good equation to indicate relationship. If we change quality and price by half then graph doesn't keep relationship and goes mad.
+
+```{r warning=FALSE}
+pinit <- 50
+qinit <- 200
+
+economistDataFrame <- data.frame(n = 0, p = pinit, q= qinit)
+
+for(i in 1:years){
+  economistDataFrame <- rbind(economistDataFrame,
+                  c(i, tail(economistDataFrame$p,1) - 0.1*(tail(economistDataFrame$q,1) - 500),
+                    tail(economistDataFrame$q,1) + 0.2*(tail(economistDataFrame$p,1) - 100)))
+}
+
+ggplot(melt(economistDataFrame, id="n"), aes(x=n, y=value, color=variable)) + geom_line()
+
+```
